@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'type' => 'user',
             'password' => Hash::make('Demo1234'),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
         ]);
 
         \App\Models\User::factory(5)->create();

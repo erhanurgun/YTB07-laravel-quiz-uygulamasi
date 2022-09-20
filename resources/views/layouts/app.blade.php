@@ -4,19 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ $header }} | {{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="shortcut icon" href="https://i.hizliresim.com/q1q4e0r.png" type="image/x-icon">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
     <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -45,7 +40,8 @@
     </div>
 
     @stack('modals')
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    {{ $js }}
     @livewireScripts
 </body>
 </html>

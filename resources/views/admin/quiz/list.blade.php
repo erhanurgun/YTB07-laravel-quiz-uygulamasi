@@ -40,11 +40,11 @@
                         </td>
                         <td class="py-4 px-6">
                             <a href="#"
-                               class="bg-green-500 hover:bg-green-600 text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
+                               class="bg-green-500 hover:bg-green-600 !text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
                                 <i class="fa fa-pen"></i>
                             </a>&nbsp;
                             <a href="#"
-                               class="bg-red-500 hover:bg-red-600 text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
+                               class="bg-red-500 hover:bg-red-600 !text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>
