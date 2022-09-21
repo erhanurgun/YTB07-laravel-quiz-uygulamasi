@@ -43,7 +43,7 @@
                                class="bg-green-500 hover:bg-green-600 !text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
                                 <i class="fa fa-pen"></i>
                             </a>&nbsp;
-                            <a href="#"
+                            <a href="{{ route('quizzes.destroy', $quiz->id) }}" onclick="return confirm('Silme işlemini onaylıyor musunuz?');"
                                class="bg-red-500 hover:bg-red-600 !text-gray-50 p-2 rounded font-medium text-blue-600 dark:text-blue-500 !hover:underline">
                                 <i class="fa fa-trash"></i>
                             </a>

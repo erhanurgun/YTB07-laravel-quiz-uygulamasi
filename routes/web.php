@@ -14,5 +14,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
+    Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
     Route::resource('quizzes', QuizController::class);
 });
