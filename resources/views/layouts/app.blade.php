@@ -35,13 +35,39 @@
     <!-- Page Content -->
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if($errors->any())
+                <div class="bg-red-200 text-red-800 p-5 rounded mb-3">
+                    <h4 class="font-bold text-xl"><i class="fa fa-bullhorn"></i>  UYARI !!!</h4>
+                    <ul class="space-y-1 list-disc list-inside">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('success'))
+                <div id="successMssg" class="bg-green-200 text-green-800 p-5 rounded mb-3">
+                    <h4 class="font-bold text-xl"><i class="fa fa-info-circle"></i> TEBRİKLER</h4>
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
+
             {{ $slot }}
         </div>
     </div>
 
     @stack('modals')
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    {{ $js }}
+    @isset($js)
+        {{ $js }}
+    @endif
+
+    <script>
+        setTimeout(function () {
+            $('#successMssg').hide()
+        }, 3600);
+    </script>
     @livewireScripts
 </body>
 </html>
