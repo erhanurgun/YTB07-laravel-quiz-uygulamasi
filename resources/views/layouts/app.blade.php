@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $header }} | {{ config('app.name', 'Laravel') }}</title>
-    <link rel="shortcut icon" href="https://i.hizliresim.com/q1q4e0r.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://urgun.com.tr/assets/_img/favicon.svg" type="image/x-icon">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Fontawesome -->
