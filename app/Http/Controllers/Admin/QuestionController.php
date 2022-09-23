@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\QuestionCreateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Quiz;
 
 class QuestionController extends Controller
@@ -24,9 +26,10 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return 'create fonksiyonu';
+        $quiz = Quiz::findOrFail($id);
+        return view('admin.question.create', compact('quiz'));
     }
 
     /**
@@ -35,9 +38,20 @@ class QuestionController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionCreateRequest $request, $id)
     {
-        return 'store fonksiyonu';
+        if ($request->hasFile('image')) {
+            $filaName = Str::slug($request->question) . '.' . $request->image->extension();
+            $fileNameWithUpload = 'uploads/' . $filaName;
+            $request->image->move(public_path('uploads'), $filaName);
+            $request->image = $fileNameWithUpload;
+            $request->merge(['image' => $fileNameWithUpload]);
+        }
+        Quiz::findOrFail($id)->questions()->create($request->post());
+
+        return redirect()->route('questions.index', $id)->withSuccess(
+            'Yeni soru ekleme işlemi başarılı bir şekilde gerçekleştirildi'
+        );
     }
 
     /**

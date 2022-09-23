@@ -26,7 +26,8 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="py-4 px-6">
                             @if($question->image)
-                                {{ $question->image }}
+                                <img class="w-20 h-15 border shadow rounded" src="{{ url($question->image) }}"
+                                     alt="{{ $question->question }}">
                             @else
                                 <i class="text-gray-300">{{ __('Soru Resmi Yok!') }}</i>
                             @endif
@@ -38,10 +39,6 @@
                             {{ substr($question->correct_answer, -1) }}. Cevap
                         </td>
                         <td class="py-4 px-6 float-right">
-                            <a href="{{ route('questions.index', $question->id) }}" title="Sorular"
-                               class="bg-yellow-500 hover:bg-yellow-600 text-gray-50 p-2 rounded !hover:underline">
-                                <i class="fa fa-question"></i>
-                            </a>&nbsp;
                             <a href="{{ route('quizzes.edit', $question->id) }}" title="Düzenle"
                                class="bg-green-500 hover:bg-green-600 text-gray-50 p-2 rounded !hover:underline">
                                 <i class="fa fa-pen"></i>
@@ -56,9 +53,6 @@
                 @endforeach
                 </tbody>
             </table>
-
-            </table>
-
         </div>
 
     </div>

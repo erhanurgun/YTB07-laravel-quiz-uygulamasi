@@ -9,4 +9,14 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'image',
+        'question',
+        'answer1',
+        'answer2',
+        'answer3',
+        'answer4',
+        'correct_answer',
+    ];
+
 }
