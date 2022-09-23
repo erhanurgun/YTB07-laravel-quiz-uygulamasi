@@ -26,10 +26,9 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="py-4 px-6">
                             @if($question->image)
-                                <img class="w-20 h-15 border shadow rounded" src="{{ url($question->image) }}"
-                                     alt="{{ $question->question }}">
+                                <a class="text-blue-600 font-bold" href="{{ asset($question->image) }}" target="_blank">Görüntüle</a>
                             @else
-                                <i class="text-gray-300">{{ __('Soru Resmi Yok!') }}</i>
+                                <i class="text-gray-300">{{ __('Resim Yok!') }}</i>
                             @endif
                         </td>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -39,11 +38,11 @@
                             {{ substr($question->correct_answer, -1) }}. Cevap
                         </td>
                         <td class="py-4 px-6 float-right">
-                            <a href="{{ route('quizzes.edit', $question->id) }}" title="Düzenle"
+                            <a href="{{ route('questions.edit', [$quiz->id, $question->id]) }}" title="Düzenle"
                                class="bg-green-500 hover:bg-green-600 text-gray-50 p-2 rounded !hover:underline">
                                 <i class="fa fa-pen"></i>
                             </a>&nbsp;
-                            <a href="{{ route('quizzes.destroy', $question->id) }}" title="Sil"
+                            <a href="{{ route('questions.destroy', [$quiz->id, $question->id]) }}" title="Sil"
                                onclick="return confirm('Silme işlemini onaylıyor musunuz?');"
                                class="bg-red-500 hover:bg-red-600 text-gray-50 p-2 rounded !hover:underline">
                                 <i class="fa fa-trash"></i>
