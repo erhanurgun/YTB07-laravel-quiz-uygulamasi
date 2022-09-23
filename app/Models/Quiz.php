@@ -15,6 +15,8 @@ class Quiz extends Model
         'finished_at'
     ];
 
+    protected $dates = ['finished_at'];
+
     public function questions(){
         return $this->hasMany('App\Models\Question');
     }

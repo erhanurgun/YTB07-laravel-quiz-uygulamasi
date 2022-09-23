@@ -37,7 +37,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if($errors->any())
                 <div class="bg-red-200 text-red-800 p-5 rounded mb-3">
-                    <h4 class="font-bold text-xl"><i class="fa fa-bullhorn"></i>  UYARI !!!</h4>
+                    <h4 class="font-bold text-xl"><i class="fa fa-bullhorn"></i> UYARI !!!</h4>
                     <ul class="space-y-1 list-disc list-inside">
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>

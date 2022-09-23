@@ -15,6 +15,7 @@
                 <tr>
                     <th scope="col" class="py-3 px-6"><i class="fa fa-calendar"></i> Bitiş Tarihi</th>
                     <th scope="col" class="py-3 px-6"><i class="fa fa-question-circle"></i> Quiz</th>
+                    <th scope="col" class="py-3 px-6"><i class="fa fa-question-circle"></i> Soru Sayısı</th>
                     <th scope="col" class="py-3 px-6"><i class="fa fa-toggle-on"></i> Durum</th>
                     <th scope="col" class="py-3 px-6 float-right"><i class="fa fa-puzzle-piece"></i> İşlemler</th>
                 </tr>
@@ -24,7 +25,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="py-4 px-6">
                             @if($quiz->finished_at)
-                                {{ $quiz->finished_at }}
+                                <span title="{{ $quiz->finished_at }}">{{ $quiz->finished_at->diffForHumans() }}</span>
                             @else
                                 <i class="text-gray-300">{{ __('Bitiş Tarihi Yok!') }}</i>
                             @endif
@@ -32,11 +33,17 @@
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <strong>{{ $quiz->title }}</strong>
                         </th>
-                        <td class="py-4 px-6">
-                            <span
-                                class="bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-200 dark:text-gray-900">
-                                {{ $quiz->status }}
-                                </span>
+                        <th scope="row" class="py-4 px-6">
+                            <strong>{{ $quiz->questions_count }}</strong>
+                        </th>
+                        <td class="py-4 px-6 text-xs font-bold">
+                            @if($quiz->status == 'publish')
+                                <span class="px-2.5 py-0.5 rounded bg-green-100 text-green-800">Yayında</span>
+                            @elseif($quiz->status == 'draft')
+                                <span class="px-2.5 py-0.5 rounded bg-yellow-100 text-yellow-800">Taslak</span>
+                            @elseif($quiz->status == 'passive')
+                                <span class="px-2.5 py-0.5 rounded bg-red-100 text-red-800">Pasif</span>
+                            @endif
                         </td>
                         <td class="py-4 px-6 float-right">
                             <a href="{{ route('questions.index', $quiz->id) }}" title="Sorular"
@@ -48,7 +55,9 @@
                                 <i class="fa fa-pen"></i>
                             </a>&nbsp;
                             <a href="{{ route('quizzes.destroy', $quiz->id) }}" title="Sil"
-                               onclick="return confirm('Silme işlemini onaylıyor musunuz?');"
+                               onclick="return confirm( 'Silme işlemine devam etmek istediğinize emin misiniz?\n' +
+                                'Eğer silme işlemine devam ederseniz, bu quize ait olan ' +
+                                '{{ $quiz->questions_count }} soruyu da beraberinde silmiş olursunuz. ');"
                                class="bg-red-500 hover:bg-red-600 text-gray-50 p-2 rounded !hover:underline">
                                 <i class="fa fa-trash"></i>
                             </a>
