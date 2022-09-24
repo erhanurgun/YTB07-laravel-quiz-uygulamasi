@@ -37,7 +37,7 @@
                             @endif
                         </td>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <strong>{{ $question->question }}</strong>
+                            <strong>{{ Str::limit($question->question, 100) }}</strong>
                         </th>
                         <td class="py-4 px-6 text-green-600">
                             {{ substr($question->correct_answer, -1) }}. Cevap

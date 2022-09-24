@@ -56,7 +56,7 @@
                             @endif
                         </td>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <strong>{{ $quiz->title }}</strong>
+                            <strong>{{ Str::limit($quiz->title, 70) }}</strong>
                         </th>
                         <th scope="row" class="py-4 px-6">
                             <strong>{{ $quiz->questions_count }}</strong>
