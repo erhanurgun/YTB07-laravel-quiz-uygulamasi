@@ -21,7 +21,7 @@ class QuestionFactory extends Factory
     {
         return [
             'quiz_id' => rand(1, 10),
-            'question' => $this->faker->sentence(rand(3, 7)),
+            'question' => $this->faker->sentence(rand(7,21)),
             'answer1' => $this->faker->sentence(rand(1, 3)),
             'answer2' => $this->faker->sentence(rand(1, 3)),
             'answer3' => $this->faker->sentence(rand(1, 3)),

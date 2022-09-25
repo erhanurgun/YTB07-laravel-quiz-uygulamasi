@@ -27,7 +27,7 @@
             @if(request('title')|| request('status'))
                 <div class="mt-[9px]">
                     <a href="{{ route('quizzes.index') }}"
-                       class="bg-gray-500 hover:bg-gray-600 text-gray-50 p-2 rounded !hover:underline">
+                       class="bg-gray-500 hover:bg-gray-600 text-gray-50 p-2 rounded-lg !hover:underline">
                         <i class="fa fa-retweet"></i> Sıfırla
                     </a>&nbsp;
                 </div>
