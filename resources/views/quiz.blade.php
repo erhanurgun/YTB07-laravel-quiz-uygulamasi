@@ -8,7 +8,8 @@
     </div>
     <div class="bg-blue-400 pb-1 rounded-b mt-[-2px]"></div>
 
-    <form>
+    <form method="POST" action="{{ route('quiz.result', $quiz->slug) }}">
+        @csrf
         <div class="grid md:grid-cols-2 mt-4 gap-6">
             @foreach($quiz->questions as $key => $question)
                 <div
