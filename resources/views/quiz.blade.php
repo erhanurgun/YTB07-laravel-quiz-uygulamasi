@@ -68,7 +68,7 @@
             @endforeach
         </div>
 
-        <button type="submit"
+        <button type="submit" onclick="return confirm('Quiz\'i sonlandırmak istediğinizden emin misiniz?')"
                 class="text-center text-uppercase text-lg w-full block my-5 text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
             Quiz'i Bitir
         </button>

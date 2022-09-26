@@ -66,7 +66,7 @@
     <script>
         setTimeout(function () {
             $('#successMssg').hide()
-        }, 3600);
+        }, 4000);
     </script>
     @livewireScripts
 </body>
