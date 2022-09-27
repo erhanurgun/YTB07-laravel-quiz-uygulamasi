@@ -36,28 +36,28 @@
                     <ul>
                         <li class="flex items-center mb-4">
                             <label for="quiz-{{ $question->id }}1" class="ml-2 text-sm font-medium
-                                   {{ $question->correct_answer == 'answer1' ? 'text-green-600' : '' }}
+                                   {{ $question->correct_answer == 'answer1' ? 'text-green-600 font-bold' : '' }}
                                    {{ $question->my_answer->answer == 'answer1' ? 'text-red-600' : 'text-gray-600' }}">
                                 A) <span>{{ $question->answer1 }}</span>
                             </label>
                         </li>
                         <li class="flex items-center mb-4">
                             <label for="quiz-{{ $question->id }}2" class="ml-2 text-sm font-medium
-                                   {{ $question->correct_answer == 'answer2' ? 'text-green-600' : '' }}
+                                   {{ $question->correct_answer == 'answer2' ? 'text-green-600 font-bold' : '' }}
                                    {{ $question->my_answer->answer == 'answer2' ? 'text-red-600' : 'text-gray-600' }}">
                                 B) <span>{{ $question->answer2 }}</span>
                             </label>
                         </li>
                         <li class="flex items-center mb-4">
                             <label for="quiz-{{ $question->id }}3" class="ml-2 text-sm font-medium
-                                   {{ $question->correct_answer == 'answer3' ? 'text-green-600' : '' }}
+                                   {{ $question->correct_answer == 'answer3' ? 'text-green-600 font-bold' : '' }}
                                    {{ $question->my_answer->answer == 'answer3' ? 'text-red-600' : 'text-gray-600' }}">
                                 C) <span>{{ $question->answer3 }}</span>
                             </label>
                         </li>
                         <li class="flex items-center mb-4">
                             <label for="quiz-{{ $question->id }}4" class="ml-2 text-sm font-medium
-                                   {{ $question->correct_answer == 'answer4' ? 'text-green-600' : '' }}
+                                   {{ $question->correct_answer == 'answer4' ? 'text-green-600 font-bold' : '' }}
                                    {{ $question->my_answer->answer == 'answer4' ? 'text-red-600' : 'text-gray-600' }}">
                                 D) <span>{{ $question->answer4 }}</span>
                             </label>

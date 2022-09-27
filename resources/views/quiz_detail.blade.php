@@ -14,7 +14,7 @@
                        class="my-5 hover:text-yellow-500 border hover:border-yellow-500 hover:bg-transparent bg-yellow-500 text-white active:bg-yellow-500 active:text-white font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                         Quiz'i Görüntüle
                     </a>
-                @else
+                @elseif(!$quiz->finished_at || ($quiz->finished_at > now()))
                     <a href="{{ route('quiz.join', $quiz->slug) }}"
                        class="my-5 text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                         Quiz'e Katıl
