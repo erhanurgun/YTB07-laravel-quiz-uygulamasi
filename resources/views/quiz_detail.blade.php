@@ -2,7 +2,7 @@
     <x-slot name="header">{{ $quiz->title }}?</x-slot>
 
     <div
-        class="inline-block w-[66%] float-right text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        class="inline-block w-[60%] float-right text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         <div class="pt-3 px-5 border-b bg-gray-200">
             <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Quiz Hakkında</h3>
         </div>
@@ -25,7 +25,7 @@
     </div>
 
     <div
-        class="inline-block w-[32%] text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        class="inline-block w-[38%] text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         <div class="pt-3 px-5 border-b bg-gray-200">
             <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Quiz Detayları</h3>
         </div>
@@ -71,5 +71,25 @@
         </ul>
     </div>
 
+    @if(count($quiz->topTen) > 0)
+        <div
+            class="mt-2 inline-block w-[38%] text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <div class="pt-3 px-5 border-b bg-gray-200">
+                <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">İlk 10</h3>
+            </div>
+            <ul class="text-sm font-medium text-gray-900 bg-white rounded border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                @foreach($quiz->topTen as $result)
+                    <li class="py-3 px-4 border-b border-gray-200 grid grid-cols-4">
+                        <h4 class="mb-[-30px] text-lg mt-1">{{ $loop->iteration }}.</h4>
+                        <img class="ml-9 col-start-1 w-[35px] h-[35px] rounded-full border border-gray-300"
+                             src="{{ asset($result->user->profile_photo_url) }}" alt="{{ $result->user->name }}">
+                        <span class="col-span-2 leading-10">{{ $result->user->name }}</span>
+                        <span
+                            class="col-end-6 w-[50px] h-6 mt-2 text-center rounded-full py-[2.7px] px-3 text-gray-50 bg-green-500">{{ $result->point }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 </x-app-layout>
