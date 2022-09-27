@@ -30,7 +30,7 @@
                                        value="answer1" required
                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="quiz-{{ $question->id }}1"
-                                       class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                       class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                                     A) <span>{{ $question->answer1 }}</span>
                                 </label>
                             </li>
@@ -39,7 +39,7 @@
                                        value="answer2" required
                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="quiz-{{ $question->id }}2"
-                                       class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                       class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                                     B) <span>{{ $question->answer2 }}</span>
                                 </label>
                             </li>
@@ -48,7 +48,7 @@
                                        value="answer3" required
                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="quiz-{{ $question->id }}3"
-                                       class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                       class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                                     C) <span>{{ $question->answer3 }}</span>
                                 </label>
                             </li>
@@ -57,7 +57,7 @@
                                        value="answer4" required
                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="quiz-{{ $question->id }}4"
-                                       class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                       class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                                     D) <span>{{ $question->answer4 }}</span>
                                 </label>
                             </li>

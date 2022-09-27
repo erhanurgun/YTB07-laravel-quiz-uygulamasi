@@ -17,7 +17,12 @@ class MainController extends Controller
 
     public function quiz($slug)
     {
-        $quiz = Quiz::whereSlug($slug)->with('questions')->withCount('questions')->first();
+        $quiz = Quiz::whereSlug($slug)->with('questions.my_answer')->withCount('questions')->first() ?? abort(404, 'Quiz Bulunamadı');
+
+        if ($quiz->my_result) {
+            return view('quiz_result', compact('quiz'));
+        }
+
         return view('quiz', compact('quiz'));
     }
 
@@ -33,7 +38,7 @@ class MainController extends Controller
         $correct = 0;
         $wrong = 0;
 
-        if ($quiz->my_result){
+        if ($quiz->my_result) {
             abort(404, 'Bu quiz\'e daha önce katıldınız');
         }
 
