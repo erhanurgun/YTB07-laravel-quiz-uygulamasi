@@ -2,16 +2,20 @@
     <x-slot name="header">Sonuç - {{ $quiz->title }}?</x-slot>
 
     <div class="pt-3 px-5 border rounded-t bg-blue-100 text-blue-900 grid md:grid-cols-3 text-center">
-        <p><b class="text-lg">Soru Sayısı: </b> {{ $quiz->questions_count }}</p>
+        <p><b class="text-lg">Puanınız: </b> {{ $quiz->my_result->point }}</p>
         <h3 class="mb-2 text-2xl font-bold tracking-tight">Quiz Sonuçları</h3>
-        <p><b class="text-lg">Kalan Süre:</b> 00 sa 00 dk 00 sn</p>
+        <p><b class="text-lg">Kullanılan Süre:</b> 00 sa 00 dk 00 sn</p>
     </div>
     <div class="bg-blue-400 pb-1 rounded-b mt-[-2px]"></div>
 
     <div class="grid md:grid-cols-2 mt-4 gap-6">
-        @foreach($quiz->questions as $key => $question)
+        @foreach($quiz->questions as $question)
             <div
                 class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <div class="m-1 mb-[-10px] px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-700 dark:text-gray-300" role="alert">
+                    <strong class="font-bold">Oranı:</strong> Bu soruya
+                    <strong class="font-bold">%{{ $question->true_percent }}</strong> oranında doğru cevap verildi!
+                </div>
                 @if($question->image)
                     <img class="rounded-t-lg w-full max-h-[300px]" src="{{ asset($question->image) }}"
                          alt="quiz resmi">
@@ -21,8 +25,10 @@
                         {{ $loop->iteration }}. SORU:
                         @if($question->correct_answer == $question->my_answer->answer)
                             <i class="fa fa-check text-green-500"></i>
+                            <small class="text-green-500">Doğru</small>
                         @else
                             <i class="fa fa-close text-red-500"></i>
+                            <small class="text-red-500">Yanlış</small>
                         @endif
                     </h5>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $question->question }}</p>

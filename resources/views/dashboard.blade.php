@@ -14,7 +14,7 @@
             </a>
         @endforeach
 
-        @if(count($quizzes) > 5)
+        @if($count > 5)
             <div class="p-3">
                 {{ $quizzes->links() }}
             </div>
