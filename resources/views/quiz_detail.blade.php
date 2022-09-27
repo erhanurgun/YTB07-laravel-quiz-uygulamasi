@@ -32,7 +32,14 @@
         <ul class="text-sm font-medium text-gray-900 bg-white rounded border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             @if($quiz->my_result)
                 <li class="py-3 px-4 border-b border-gray-200">
-                    <span>Alınan Puan</span>
+                    <span>Sıralamanız</span>
+                    <span
+                        class="float-right rounded-full py-0.5 px-3 text-blue-800 bg-blue-100">#{{ $quiz->my_rank }}</span>
+                </li>
+            @endif
+            @if($quiz->my_result)
+                <li class="py-3 px-4 border-b border-gray-200">
+                    <span>Puanınız</span>
                     <span
                         class="float-right rounded-full py-0.5 px-3 text-blue-800 bg-blue-100">{{ $quiz->my_result->point }}</span>
                 </li>
@@ -83,7 +90,9 @@
                         <h4 class="mb-[-30px] text-lg mt-1">{{ $loop->iteration }}.</h4>
                         <img class="ml-9 col-start-1 w-[35px] h-[35px] rounded-full border border-gray-300"
                              src="{{ asset($result->user->profile_photo_url) }}" alt="{{ $result->user->name }}">
-                        <span class="col-span-2 leading-10">{{ $result->user->name }}</span>
+                        <span
+                            class="col-span-2 leading-10 {{ $result->user_id == auth()->user()->id ? 'text-current font-bold' : '' }}">
+                            {{ $result->user->name }}</span>
                         <span
                             class="col-end-6 w-[50px] h-6 mt-2 text-center rounded-full py-[2.7px] px-3 text-gray-50 bg-green-500">{{ $result->point }}</span>
                     </li>

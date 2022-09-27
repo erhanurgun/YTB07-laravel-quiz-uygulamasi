@@ -13,7 +13,7 @@ class Quiz extends Model
 
     protected $fillable = ['title', 'description', 'finished_at', 'status', 'slug'];
     protected $dates = ['finished_at'];
-    protected $appends = ['details'];
+    protected $appends = ['details', 'my_rank'];
 
     public function getDetailsAttribute()
     {
@@ -26,7 +26,19 @@ class Quiz extends Model
         return null;
     }
 
-    public function topTen(){
+    public function getMyRankAttribute()
+    {
+        $rank = 0;
+        foreach ($this->results()->orderByDesc('point')->get() as $result) {
+            $rank++;
+            if ($result->user_id == auth()->user()->id) {
+                return $rank;
+            }
+        }
+    }
+
+    public function topTen()
+    {
         return $this->results()->orderByDesc('point')->take(10); // take() or limit()
     }
 
