@@ -58,12 +58,16 @@
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <strong>{{ Str::limit($quiz->title, 70) }}?</strong>
                         </th>
-                        <th scope="row" class="py-4 px-6">
+                        <td class="py-4 px-6">
                             <strong>{{ $quiz->questions_count }}</strong>
-                        </th>
+                        </td>
                         <td class="py-4 px-6 text-xs font-bold">
                             @if($quiz->status == 'publish')
-                                <span class="px-2.5 py-0.5 rounded bg-green-100 text-green-800">Yayında</span>
+                                @if(!$quiz->finished_at || $quiz->finished_at > now())
+                                    <span class="px-2.5 py-0.5 rounded bg-green-100 text-green-800">Yayında</span>
+                                @else
+                                    <span class="px-2.5 py-0.5 rounded bg-gray-100 text-gray-800">Süresi Bitti</span>
+                                @endif
                             @elseif($quiz->status == 'draft')
                                 <span class="px-2.5 py-0.5 rounded bg-yellow-100 text-yellow-800">Taslak</span>
                             @elseif($quiz->status == 'passive')
@@ -71,6 +75,10 @@
                             @endif
                         </td>
                         <td class="py-4 px-6 float-right">
+                            <a href="{{ route('quizzes.details', $quiz->id) }}" title="Analizler"
+                               class="bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50 p-2 rounded !hover:underline">
+                                <i class="fa fa-info"></i>
+                            </a>&nbsp;
                             <a href="{{ route('questions.index', $quiz->id) }}" title="Sorular"
                                class="bg-yellow-500 hover:bg-yellow-600 text-gray-50 p-2 rounded !hover:underline">
                                 <i class="fa fa-question"></i>
