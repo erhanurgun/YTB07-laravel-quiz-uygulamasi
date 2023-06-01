@@ -3,7 +3,11 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "watch": "vite -- --watch"
+        "watch": "vite -- --watch",
+        "serve": "php artisan serve --host=urgunsoft.test --port=80",
+        "seed": "php artisan migrate:fresh --seed",
+        "reset": "php artisan route:clear && php artisan cache:clear && php artisan view:clear && php artisan optimize:clear && php artisan route:cache && php artisan config:cache && php artisan optimize",
+        "update": "composer update --dry-run && composer dump-autoload && composer audit --locked && composer outdated && composer show -i"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
