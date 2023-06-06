@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html
+      - ./node:/var/www/html
+      - ./laravel.conf:/etc/apache2/sites-available/laravel.conf
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD:
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+networks:
+  default:
+    name: lara_network
